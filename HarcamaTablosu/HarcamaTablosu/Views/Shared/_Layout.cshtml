@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HarcamaTablosu</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HarcamaTablosu.styles.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #343a40 !important;
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .card {
+            transition: transform 0.3s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+        .btn-primary {
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+    </style>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary shadow position-relative">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/Home/Index"><i class="fas fa-wallet"></i> Gider Takip</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav navbar-center">
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#addExpenseModal">
+                                <i class="fas fa-plus-circle"></i> Gider Ekle
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Settings" class="btn btn-outline-light me-2">
+                                <i class="fas fa-cog"></i> Ayarlar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Home" asp-action="Details" class="btn btn-outline-light">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i> Detaylar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <!-- Gider Ekle Modal -->
+        <div class="modal fade" id="addExpenseModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Gider Ekle</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="expenseForm" asp-controller="Home" asp-action="Index" method="post">
+                            <div class="mb-3">
+                                <label for="expenseDate" class="form-label">Tarih Seç</label>
+                                <input type="text" class="form-control" id="expenseDate" name="Tarih">
+                            </div>
+                            <div class="mb-3">
+                                <label for="expenseType" class="form-label">Gider Tipi</label>
+                                <select class="form-control" id="expenseType" name="GiderTipId">
+                                    @foreach (var tip in ViewBag.GiderTipleri)
+                                    {
+                                        <option value="@tip.GiderTipId">@tip.GiderTipi</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Aciklama" class="form-label">Açıklama (İsteğe bağlı)</label>
+                                <textarea class="form-control" name="GiderAciklama"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="expenseAmount" class="form-label">Tutar (TL)</label>
+                                <input type="number" class="form-control" id="expenseAmount" name="Tutar">
+                            </div>
+                            <button type="submit" class="btn btn-success">Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - HarcamaTablosu - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

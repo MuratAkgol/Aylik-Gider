@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using EntityLayer
+@model List<GiderTablosu>
+
+<div class="row">
+    <div class="col-md-12 col-12 col-xl-12 col-sm-12">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Gider ID</th>
+                    <th scope="col">Gider Açıklama</th>
+                    <th scope="col">Gider Türü</th>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Tutar</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.GiderId</th>
+                        <td>
+                            <input type="text" class="form-control" value="@item.GiderAciklama" name="GiderAciklama">
+                        </td>
+                        <td>@item.GiderTipId</td>
+                        <td>@item.Tarih.ToShortDateString()</td>
+                        <td><input type="text" class="form-control" value="@item.Tutar" name="Tutar"></td>
+                        <td>
+                            <button class="btn btn-outline-success btn-sm" value="@item.GiderId">Kaydet</button>
+                            <button class="btn btn-warning btn-sm" value="@item.GiderId">Sil</button>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

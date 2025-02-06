@@ -1,0 +1,164 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var errorMessage = TempData["TimeError"] as string;
+    var successMessage = TempData["TimeSuccess"] as string;
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="errorModalLabel">Hata</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <p>@errorMessage</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var errorModalEl = document.getElementById('errorModal');
+            var errorModal = new bootstrap.Modal(errorModalEl);
+            errorModal.show();
+        });
+    </script>
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Başlık: Yeşil arka plan, beyaz yazı -->
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="successModalLabel">Başarılı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>@successMessage</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var successModalEl = document.getElementById('successModal');
+            var successModal = new bootstrap.Modal(successModalEl);
+            successModal.show();
+        });
+    </script>
+}
+
+
+<h2 class="text-center my-4">Gider Takip Sistemi</h2>
+
+<!-- Toplam Harcama ve Son 1 Hafta Bilgisi -->
+<div class="row my-4">
+    <div class="col-md-6 mt-2">
+        <div class="card p-3 text-center shadow-sm">
+            <h5>Aylık Toplam Harcama</h5>
+            <h3 id="totalExpense">@ViewBag.HarcamaToplamı TL</h3>
+        </div>
+    </div>
+    <div class="col-md-6 mt-2">
+        <div class="card p-3 text-center shadow-sm">
+            <h5>Son @ViewBag.Ayarlar_Hafta Haftanın Harcaması</h5>
+            <h3 id="lastWeekExpense">@ViewBag.ToplamHarcama TL</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Chart Alanı -->
+<div class="row my-4">
+    <div class="col-md-6">
+        <canvas id="expensePieChart"></canvas>
+       
+    </div>
+    <div class="col-md-6">
+        <canvas id="expenseBarChart"></canvas>
+    </div>
+</div>
+
+
+
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+
+            var ctxBar = document.getElementById('expenseBarChart').getContext('2d');
+            var expenseBarChart = new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['Hafta 1', 'Hafta 2', 'Hafta 3', 'Hafta 4'],
+                    datasets: [{
+                        label: 'Haftalık Harcamalar',
+                        data: [1500, 1800, 1200, 2200],
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Home/GetPieChartData",
+            type: "GET",
+            success: function (data) {
+                if (!data || data.length === 0) {
+                    return;
+                }
+
+                var giderTipleri = [];
+                var toplamTutarlar = [];
+                var renkler = [];
+
+                    data.forEach(function (item, index) {
+                        giderTipleri.push(item.giderTipi);
+                        toplamTutarlar.push(item.toplamTutar);
+                        renkler.push(item.renk);
+                    });
+
+                var ctx = document.getElementById('expensePieChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: giderTipleri,
+                        datasets: [{
+                            data: toplamTutarlar,
+                            backgroundColor: renkler
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            },
+            error: function (error) {
+                console.log("Hata:", error);
+            }
+        });
+
+    });
+
+</script>
+
