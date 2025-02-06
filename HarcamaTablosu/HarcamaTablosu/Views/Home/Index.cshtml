@@ -86,17 +86,17 @@
 <div class="row my-4">
     <div class="col-md-6">
         <canvas id="expensePieChart"></canvas>
-       
     </div>
     <div class="col-md-6">
-        <canvas id="expenseBarChart"></canvas>
+        <canvas id="expensePointChart"></canvas>
     </div>
 </div>
 
 
 
 
-<script>
+
+@* <script>
         document.addEventListener("DOMContentLoaded", function () {
             
 
@@ -159,6 +159,105 @@
         });
 
     });
+   
 
 </script>
+ *@
 
+<script>
+    $(document).ready(function () {
+        var pieChartInstance = null;
+        var pointChartInstance = null;
+
+        function loadChartData() {
+            $.ajax({
+                url: "/Home/GetPieChartData",
+                type: "GET",
+                success: function (data) {
+                    console.log("Gelen Veri:", data);
+
+                    if (!data || data.length === 0) {
+                        console.log("Boş veya geçersiz veri geldi!");
+                        return;
+                    }
+
+                    var giderTipleri = [];
+                    var toplamTutarlar = [];
+                    var renkler = [];
+
+                    data.forEach(function (item) {
+                        console.log(`Gider Tipi: ${item.giderTipi}, Toplam Tutar: ${item.toplamTutar}, Renk: ${item.renk}`);
+
+                        giderTipleri.push(item.giderTipi);
+                        toplamTutarlar.push(item.toplamTutar);
+                        renkler.push(item.renk);
+                    });
+
+                    var ctxPie = document.getElementById('expensePieChart');
+                    if (ctxPie) {
+                        var ctxPieChart = ctxPie.getContext('2d');
+                        if (pieChartInstance) {
+                            pieChartInstance.destroy();
+                        }
+                        pieChartInstance = new Chart(ctxPieChart, {
+                            type: 'pie',
+                            data: {
+                                labels: giderTipleri,
+                                datasets: [{
+                                    data: toplamTutarlar,
+                                    backgroundColor: renkler
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false
+                            }
+                        });
+                    }
+
+                    var ctxPoint = document.getElementById('expensePointChart');
+                    if (ctxPoint) {
+                        var ctxPointChart = ctxPoint.getContext('2d');
+                        if (pointChartInstance) {
+                            pointChartInstance.destroy();
+                        }
+                        pointChartInstance = new Chart(ctxPointChart, {
+                            type: 'scatter',
+                            data: {
+                                datasets: [{
+                                    label: "Gider Tipleri",
+                                    data: toplamTutarlar.map((value, index) => ({
+                                        x: index,
+                                        y: value
+                                    })),
+                                    backgroundColor: renkler,
+                                    pointStyle: 'circle', // Noktaların stili
+                                    pointRadius: 10, // Noktaların büyüklüğü
+                                    pointHoverRadius: 15, // Üzerine gelindiğinde büyüklük
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    x: {
+                                        type: 'linear',
+                                        position: 'bottom'
+                                    },
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    }
+                },
+                error: function (error) {
+                    console.log("Hata:", error);
+                }
+            });
+        }
+
+        loadChartData();
+    });
+</script>

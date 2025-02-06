@@ -4,17 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HarcamaTablosu</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HarcamaTablosu.styles.css" asp-append-version="true" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+    <!-- Font Awesome (Iconlar için) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HarcamaTablosu.styles.css" asp-append-version="true" />
+
+    <!-- jQuery ve jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <!-- Chart.js (Grafikler için) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   @*  <!-- Bootstrap JS ve Popper.js (Mobil Navbar'ın düzgün çalışması için gerekli) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> *@
 </head>
+
 <body>
     <style>
         body {
@@ -75,6 +89,13 @@
         </nav>
 
     </header>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+        });
+    </script>
     <div class="container">
         <!-- Gider Ekle Modal -->
         <div class="modal fade" id="addExpenseModal" tabindex="-1" aria-hidden="true">
@@ -88,7 +109,7 @@
                         <form id="expenseForm" asp-controller="Home" asp-action="Index" method="post">
                             <div class="mb-3">
                                 <label for="expenseDate" class="form-label">Tarih Seç</label>
-                                <input type="text" class="form-control" id="expenseDate" name="Tarih">
+                                <input class="form-control" name="Tarih" type="text" id="datepicker" size="30">
                             </div>
                             <div class="mb-3">
                                 <label for="expenseType" class="form-label">Gider Tipi</label>
@@ -123,7 +144,6 @@
             &copy; 2025 - HarcamaTablosu - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

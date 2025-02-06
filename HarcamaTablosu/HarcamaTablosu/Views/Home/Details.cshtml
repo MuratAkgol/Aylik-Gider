@@ -1,15 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "_Layout";
 }
+
 @using EntityLayer
 @model List<GiderTablosu>
 
-<div class="row">
-    <div class="col-md-12 col-12 col-xl-12 col-sm-12">
+<!-- Başarı ve Hata Mesajları -->
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
-        <table class="table table-hover">
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $(".datepicker").datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+
+        $(".edit-btn").click(function () {
+            var row = $(this).closest("tr"); 
+            row.find("input, select").prop("disabled", false);
+            row.find(".save-btn").show();
+            $(this).hide();
+        });
+
+        $("form").submit(function (event) {
+            var tarihInput = $(this).find("input[name='Tarih']");
+            var tarihDegeri = tarihInput.val();
+
+            var tarihParcalari = tarihDegeri.split(".");
+            if (tarihParcalari.length === 3) {
+                tarihDegeri = tarihParcalari[2] + "." + tarihParcalari[1] + "." + tarihParcalari[0];
+                tarihInput.val(tarihDegeri);
+            }
+
+        });
+    });
+</script>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover mt-2">
             <thead>
                 <tr>
                     <th scope="col">Gider ID</th>
@@ -23,23 +66,54 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    string datepickerId = "datepicker_" + item.GiderId;
                     <tr>
                         <th scope="row">@item.GiderId</th>
+                        <form method="post" asp-action="UpdateDetails" asp-controller="Home">
+                            <input type="hidden" name="GiderId" value="@item.GiderId" />
                         <td>
-                            <input type="text" class="form-control" value="@item.GiderAciklama" name="GiderAciklama">
+                            <input type="text" class="form-control" name="GiderAciklama" value="@item.GiderAciklama" disabled>
                         </td>
-                        <td>@item.GiderTipId</td>
-                        <td>@item.Tarih.ToShortDateString()</td>
-                        <td><input type="text" class="form-control" value="@item.Tutar" name="Tutar"></td>
                         <td>
-                            <button class="btn btn-outline-success btn-sm" value="@item.GiderId">Kaydet</button>
-                            <button class="btn btn-warning btn-sm" value="@item.GiderId">Sil</button>
+                            <select class="form-control" name="GiderTipId" disabled>
+                                    @foreach (var tip in ViewBag.GiderTipleri)
+                                    {
+                                    <option value="@tip.GiderTipId" selected="@(item.GiderTipId == tip.GiderTipId ? "selected" : null)">
+                                            @tip.GiderTipi
+                                    </option>
+                                    }
+                            </select>
+                        </td>
+                        <td>
+                            <input class="form-control datepicker" name="Tarih" type="text" id="@datepickerId" size="30" value="@item.Tarih.ToString("dd-MM-yyyy")" disabled>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="Tutar" value="@item.Tutar" disabled>
+                        </td>
+                        <td>
+                            <!-- Düzenle Butonu -->
+                            <button type="button" class="btn btn-outline-primary btn-sm edit-btn">
+                                <i class="fas fa-edit"></i> Düzenle
+                            </button>
 
+                            <!-- Kaydet Butonu (Başlangıçta gizli) -->
+                            <button type="submit" class="btn btn-success btn-sm save-btn" style="display:none;">
+                                <i class="fas fa-save"></i> Kaydet
+                            </button>
+                        </td>
+                        </form>
+                        <td>
+                            <form method="post" asp-action="DeleteExpense" asp-controller="Home" onsubmit="return confirm('Bu gideri silmek istediğinizden emin misiniz?');">
+                                <input type="hidden" name="GiderId" value="@item.GiderId" />
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Sil
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 }
-
             </tbody>
         </table>
+
     </div>
 </div>

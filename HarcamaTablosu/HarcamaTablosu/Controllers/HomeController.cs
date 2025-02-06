@@ -82,15 +82,31 @@ namespace HarcamaTablosu.Controllers
             return RedirectToAction("Settings");
         }
         [HttpPost]
-        public IActionResult UpdateSettings(Ayarlar ayarlar)
+        public IActionResult UpdateSettings(Ayarlar model)
         {
-            
-            var ayar = _context.tbl_ayarlar.FirstOrDefault();
-            ayar.BugunOncesi = ayarlar.BugunOncesi;
-            ayar.KacHaftaOnce = ayarlar.KacHaftaOnce;
-            _context.SaveChanges();
+            try
+            {
+                var existingSettings = _context.tbl_ayarlar.FirstOrDefault();
+                if (existingSettings != null)
+                {
+                    existingSettings.BugunOncesi = model.BugunOncesi;
+                    existingSettings.KacHaftaOnce = model.KacHaftaOnce;
+                    _context.SaveChanges();
+                    TempData["Success"] = "Ayarlar başarıyla güncellendi!";
+                }
+                else
+                {
+                    TempData["Error"] = "Ayarlar bulunamadı!";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Bir hata oluştu: " + ex.Message;
+            }
+
             return RedirectToAction("Settings");
         }
+
         [HttpPost]
         public IActionResult UpdateExpense(List<GiderTip> giderTipleri)
         {
@@ -131,11 +147,71 @@ namespace HarcamaTablosu.Controllers
 
         public IActionResult Details()
         {
-            var details = _context.tbl_Giderler.ToList();
+            var details = _context.tbl_Giderler
+                .OrderBy(x => x.Tarih)
+                .ThenBy(x => x.GiderTipId)
+                .ToList();
+
             var giderTipleri = _context.tbl_GiderTipleri.ToList();
             ViewBag.GiderTipleri = giderTipleri;
+
             return View(details);
         }
+
+        [HttpPost]
+        public IActionResult UpdateDetails(int GiderId, string GiderAciklama, int GiderTipId, decimal Tutar, DateTime Tarih)
+        {
+            try
+            {
+                var existingGider = _context.tbl_Giderler.FirstOrDefault(x => x.GiderId == GiderId);
+                if (existingGider != null)
+                {
+                    existingGider.GiderAciklama = GiderAciklama;
+                    existingGider.GiderTipId = GiderTipId;
+                    existingGider.Tutar = Tutar;
+                    existingGider.Tarih = Tarih;
+
+                    _context.SaveChanges();
+                    TempData["Success"] = "Gider bilgisi başarıyla güncellendi!";
+                }
+                else
+                {
+                    TempData["Error"] = "Güncellenmek istenen gider bulunamadı!";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Bir hata oluştu: " + ex.Message;
+            }
+
+            return RedirectToAction("Details");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteExpense(int GiderId)
+        {
+            try
+            {
+                var gider = _context.tbl_Giderler.FirstOrDefault(x => x.GiderId == GiderId);
+                if (gider != null)
+                {
+                    _context.tbl_Giderler.Remove(gider);
+                    _context.SaveChanges();
+                    TempData["Success"] = "Gider başarıyla silindi!";
+                }
+                else
+                {
+                    TempData["Error"] = "Silinecek gider bulunamadı!";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Bir hata oluştu: " + ex.Message;
+            }
+
+            return RedirectToAction("Details");
+        }
+
 
         [HttpGet]
         public JsonResult GetPieChartData()

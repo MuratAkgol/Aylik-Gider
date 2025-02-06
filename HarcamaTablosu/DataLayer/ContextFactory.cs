@@ -15,7 +15,7 @@ namespace DataLayer
             var optionsBuilder = new DbContextOptionsBuilder<Context>();
 
             // Bağlantı dizesini ayarla
-            optionsBuilder.UseSqlServer("Server=DESKTOP-NNI8G0S; Database=AylikHarcama; Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=LAPTOP-26L8GN1D; Database=AylikHarcama; Trusted_Connection=True;");
 
             return new Context(optionsBuilder.Options);
         }

@@ -35,8 +35,9 @@
             <div class="card p-4 shadow-sm my-4">
                 <h5>İşlem ve Görünüm Ayarları</h5>
                 <form method="post" asp-action="UpdateSettings" asp-controller="Home">
+                    <input type="hidden" name="BugunOncesi" value="false" />
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="tarihIzni" name="BugunOncesi" @(Model.BugunOncesi ? "checked" : "")>
+                        <input class="form-check-input" type="checkbox" id="tarihIzni" name="BugunOncesi" value="true" @(Model.BugunOncesi ? "checked" : "")>
                         <label class="form-check-label" for="tarihIzni">Bu tarihten sonraki tarihli işlemlere izin ver</label>
                     </div>
                     <div class="mt-3">
@@ -46,8 +47,8 @@
                     <button type="submit" class="btn btn-primary mt-2">Güncelle</button>
                 </form>
             </div>
-
         </div>
+
     </div>
     <div class="col-md-3">
         <div class="card p-4 shadow-sm my-4">
