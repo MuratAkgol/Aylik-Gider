@@ -37,7 +37,7 @@
                 <form method="post" asp-action="UpdateSettings" asp-controller="Home">
                     <input type="hidden" name="BugunOncesi" value="false" />
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="tarihIzni" name="BugunOncesi" value="true" @(Model.BugunOncesi ? "checked" : "")>
+                        <input class="form-check-input" type="radio" id="tarihIzni" name="BugunOncesi" value="true" @(Model.BugunOncesi ? "checked" : "")>
                         <label class="form-check-label" for="tarihIzni">Bu tarihten sonraki tarihli işlemlere izin ver</label>
                     </div>
                     <div class="mt-3">
@@ -89,13 +89,13 @@
                                     <input type="color" class="form-control form-control-color" name="GiderTipleri[@i].RenkKodu" value="@ViewBag.GiderTipleri[i].RenkKodu">
                                 </td>
                                 <td>
-                                    <button class="btn-outline-danger btn-sm rounded-circle" formaction="/Home/DeleteExpense?giderTipId=@ViewBag.GiderTipleri[i].GiderTipId" formmethod="post">Sil</button>
+                                    <button class="btn btn-outline-danger btn-sm rounded-circle" formaction="/Home/DeleteExpense?giderTipId=@ViewBag.GiderTipleri[i].GiderTipId" formmethod="post">Sil</button>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                <button class="btn-outline-dark btn-sm rounded" type="submit">Güncelle</button>
+                <button class="btn btn-outline-dark btn-sm rounded" type="submit">Güncelle</button>
             </form>
 
         </div>

@@ -21,3 +21,15 @@ C:\Users\Murat\OneDrive\Masaüstü\Aylik-Gider-main\HarcamaTablosu\EntityLayer\o
 C:\Users\Murat\OneDrive\Masaüstü\Aylik-Gider-main\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\refint\EntityLayer.dll
 C:\Users\Murat\OneDrive\Masaüstü\Aylik-Gider-main\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.pdb
 C:\Users\Murat\OneDrive\Masaüstü\Aylik-Gider-main\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\ref\EntityLayer.dll
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\bin\Debug\net6.0\EntityLayer.deps.json
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\bin\Debug\net6.0\EntityLayer.dll
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\bin\Debug\net6.0\EntityLayer.pdb
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.csproj.AssemblyReference.cache
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.AssemblyInfoInputs.cache
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.AssemblyInfo.cs
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.csproj.CoreCompileInputs.cache
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.dll
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\refint\EntityLayer.dll
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\EntityLayer.pdb
+D:\Github\Aylik-Gider\HarcamaTablosu\EntityLayer\obj\Debug\net6.0\ref\EntityLayer.dll

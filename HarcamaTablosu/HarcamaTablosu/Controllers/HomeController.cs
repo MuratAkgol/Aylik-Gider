@@ -91,6 +91,7 @@ namespace HarcamaTablosu.Controllers
                 {
                     existingSettings.BugunOncesi = model.BugunOncesi;
                     existingSettings.KacHaftaOnce = model.KacHaftaOnce;
+                    
                     _context.SaveChanges();
                     TempData["Success"] = "Ayarlar başarıyla güncellendi!";
                 }

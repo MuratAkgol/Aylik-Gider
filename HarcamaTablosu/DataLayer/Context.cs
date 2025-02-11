@@ -30,7 +30,7 @@ namespace DataLayer
         {
             if (!optionsBuilder.IsConfigured) // Sadece eğer DbContextOptions gelmemişse
             {
-                optionsBuilder.UseSqlServer("Server=LAPTOP-26L8GN1D; Database=AylikHarcama; Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-NNI8G0S; Database=AylikHarcama; Trusted_Connection=True;");
             }
         }
 

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj": {}
+    "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj": {
+    "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\Murat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\BusinessLayer\\obj\\",
+        "projectPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\BusinessLayer\\BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\murat\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Murat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\murat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\DataLayer\\DataLayer.csproj"
+              "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\DataLayer\\DataLayer.csproj"
               },
-              "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj": {
-                "projectPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj"
+              "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj": {
+                "projectPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj"
               }
             }
           }
@@ -66,24 +67,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\DataLayer\\DataLayer.csproj": {
+    "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\DataLayer\\DataLayer.csproj",
-        "packagesPath": "C:\\Users\\Murat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\DataLayer\\obj\\",
+        "projectPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\murat\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Murat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\murat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -92,14 +93,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj": {
-                "projectPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj"
+              "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj": {
+                "projectPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj"
               }
             }
           }
@@ -145,24 +147,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj": {
+    "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj",
+        "projectUniqueName": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj",
         "projectName": "EntityLayer",
-        "projectPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj",
-        "packagesPath": "C:\\Users\\Murat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Murat\\OneDrive\\Masaüstü\\Aylik-Gider-main\\HarcamaTablosu\\EntityLayer\\obj\\",
+        "projectPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\EntityLayer.csproj",
+        "packagesPath": "C:\\Users\\murat\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Aylik-Gider\\HarcamaTablosu\\EntityLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Murat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\murat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -171,6 +173,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -204,7 +207,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
